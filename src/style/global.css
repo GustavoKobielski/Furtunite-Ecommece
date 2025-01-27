@@ -1,0 +1,37 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --gray-black: #333333;
+  --gray: #666666;
+
+  --brown: #b88e2f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reset CSS básico */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased; /* Padronização das fontes ficar mais fina  */
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
