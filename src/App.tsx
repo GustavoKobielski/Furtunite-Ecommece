@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './style/reset.css'
+import './style/global.css'
 
 import Home from './pages/Home/Home'; // Pagina Home
 import About from './pages/About/About'; // Pagina About
