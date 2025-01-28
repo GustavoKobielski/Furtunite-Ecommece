@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home/Home'; // Pagina Home
@@ -6,11 +5,13 @@ import About from './pages/About/About'; // Pagina About
 import Contact from './pages/Contact/Contact'; // Pagina Contact
 import Shop from './pages/Shop/Shop'; // Pagina Shop
 
+import Navbar from './components/Navbar/Navbar';
+
 function App() {
   return (
     <Router>
       <div>
-        {/* Navbar aq */}
+        <Navbar />
 
         <Routes>
           <Route path="/" element={<Home />} />          {/* Página Home */}
