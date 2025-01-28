@@ -1,0 +1,16 @@
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoryItem .categoryImage {
+  width: 30rem;
+  height: 35rem;
+}
+
+.categoryItem h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-top: 2rem;
+}
