@@ -22,9 +22,14 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased; /* Padronização das fontes ficar mais fina  */
+  font-size: 1.6rem;
 }
 
 body,
