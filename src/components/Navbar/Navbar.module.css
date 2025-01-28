@@ -1,6 +1,6 @@
 /* superior | direita | inferior | esquerda */
 
-.container {
+.containerNavbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,12 +9,12 @@
   background-color: var(--white);
 }
 
-.navbar ul {
+.containerNavbar .navbar ul {
   display: flex;
   gap: 7.5rem;
 }
 
-.navbar ul li a {
+.containerNavbar .navbar ul li a {
   font-size: 1.6rem;
 
   color: var(--black);
@@ -22,16 +22,16 @@
   font-weight: 500;
 }
 
-.icons {
+.containerNavbar .icons {
   display: flex;
   gap: 4.5rem;
 }
 
-.icons img {
+.containerNavbar .icons img {
   width: 2.4rem;
   height: 2.4rem;
 }
 
-.icons img:hover {
+.containerNavbar .icons img:hover {
   cursor: pointer;
 }

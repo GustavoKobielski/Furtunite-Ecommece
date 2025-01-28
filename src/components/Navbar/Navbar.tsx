@@ -10,7 +10,7 @@ import Cart from '../../assets/Icons/ant-design_shopping-cart-outlined.svg'
 
 const Navbar = () => {
   return (
-    <div className={style.container}>
+    <div className={style.containerNavbar}>
       <img src={logo} alt="" />
 
       <nav className={style.navbar}>
