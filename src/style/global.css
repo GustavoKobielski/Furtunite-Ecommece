@@ -24,12 +24,7 @@
 
 html {
   font-size: 62.5%;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  -webkit-font-smoothing: antialiased; /* Padronização das fontes ficar mais fina  */
-  font-size: 1.6rem;
+  overflow-y: scroll;
 }
 
 body,
@@ -37,6 +32,27 @@ input,
 textarea,
 button {
   font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased; /* Padronização das fontes ficar mais fina  */
   font-weight: 400;
   font-size: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brown) transparent;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--brown);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
