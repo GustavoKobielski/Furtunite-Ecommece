@@ -9,12 +9,32 @@ interface Category {
   imageUrl: string;
 }
 
+interface Product {
+  name: string;
+  price: number;
+  imageUrl: string;
+  description: string;
+  BeforePrice?: number;
+}
+
 const Home = () => {
 
   const categories: Category[] = [
     { name: "Dinning", imageUrl: imageCardCategory1 },
     { name: "Living", imageUrl: imageCardCategory1 },
     { name: "Bedroom", imageUrl: imageCardCategory1 },
+  ];
+
+  const products: Product[] = [
+    { name: "Product 1", description: "algoo", price: 10.99, BeforePrice: 30, imageUrl: imageCardCategory1 },
+    { name: "Product 2", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+    { name: "Product 3", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+    { name: "Product 4", description: "algoo", price: 40.99, BeforePrice: 80, imageUrl: imageCardCategory1 },
+    { name: "Product 5", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+    { name: "Product 6", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+    { name: "Product 7", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+    { name: "Product 8", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
+
   ];
 
   return (
@@ -50,8 +70,18 @@ const Home = () => {
           <h1 className={style.title}>Our Products</h1>
 
           <div className={style.wrapper_products}>
-            <ProductCard imageUrl={imageCardCategory1} name='Syltherine' description='Stylish cafe chair' price={2500} BeforePrice={3500}/>
+            {products.map((category, index) => (
+              <ProductCard key={index}
+              imageUrl={category.imageUrl}
+              name={category.name}
+              description={category.description}
+              price={category.price}
+              BeforePrice={category.BeforePrice}
+              />
+            ))}
           </div>
+
+          <a href='#' className={style.show_more}>Show More</a>
       </div>
 
     </main>

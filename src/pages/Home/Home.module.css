@@ -102,5 +102,19 @@
 }
 
 .our_products .wrapper_products {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5rem auto 0;
+}
+
+.our_products .show_more {
+  margin-top: 3rem;
+  color: var(--brown);
+  padding: 1rem 7rem;
+  text-decoration: none;
+  border: 1px solid var(--brown);
+  font-size: 1.4rem;
 }

@@ -18,12 +18,12 @@ const ProductCard: React.FC<ProductCardProps> = ({imageUrl, name, description, p
   return (
     <div className={style.containerProductCard}>
       <div className={style.imageWrapper}>
-      <img src={imageUrl} alt="" />
-      {discountPercentage > 0 && (
-        <div className={style.discountStar}>
-            {discountPercentage}% OFF
-          </div>
-        )}
+        <img src={imageUrl} alt="" />
+        {discountPercentage > 0 && (
+          <div className={style.discountStar}>
+              {discountPercentage}% OFF
+            </div>
+          )}
       </div>
       <div className={style.contentInfos}>
         <h1>{name}</h1>
