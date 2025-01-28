@@ -1,7 +1,21 @@
+import CategoryCard from '../../components/category_card/Category';
 import style from './Home.module.css'
 
+import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg'
+
+interface Category {
+  name: string;
+  imageUrl: string;
+}
 
 const Home = () => {
+
+  const categories: Category[] = [
+    { name: "Dinning", imageUrl: imageCardCategory1 },
+    { name: "Living", imageUrl: imageCardCategory1 },
+    { name: "Bedroom", imageUrl: imageCardCategory1 },
+  ];
+
   return (
     <main className={style.main}>
       <div className={style.container}>
@@ -13,6 +27,21 @@ const Home = () => {
             <p className={style.text}>Lorem Ipsum Dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
             <a className={style.buy_now}>Buy now</a>
           </div>
+        </div>
+      </div>
+
+      <div className={style.browse}>
+        <h1 className={style.title}>Browse The Range</h1>
+        <p className={style.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <div className={style.wrapper_browse}>
+          {categories.map((category, index) => (
+            <CategoryCard
+              key={index}
+              name={category.name}
+              imageUrl={category.imageUrl}
+            />
+          ))}
         </div>
       </div>
 
