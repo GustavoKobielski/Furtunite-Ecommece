@@ -86,3 +86,21 @@
   align-items: center;
   gap: 2rem;
 }
+
+.our_products {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.our_products .title {
+  font-weight: bold;
+  font-size: 3.5rem;
+  color: var(--gray-sec);
+}
+
+.our_products .wrapper_products {
+  display: flex;
+}

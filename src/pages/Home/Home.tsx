@@ -2,6 +2,7 @@ import CategoryCard from '../../components/category_card/Category';
 import style from './Home.module.css'
 
 import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg'
+import ProductCard from '../../components/Product_Card/ProductCard';
 
 interface Category {
   name: string;
@@ -43,6 +44,14 @@ const Home = () => {
             />
           ))}
         </div>
+      </div>
+
+      <div className={style.our_products}>
+          <h1 className={style.title}>Our Products</h1>
+
+          <div className={style.wrapper_products}>
+            <ProductCard imageUrl={imageCardCategory1} name='Syltherine' description='Stylish cafe chair' price={2500} BeforePrice={3500}/>
+          </div>
       </div>
 
     </main>
