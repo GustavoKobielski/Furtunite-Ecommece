@@ -1,0 +1,45 @@
+.containerProductCard {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+
+  background-color: #f4f5f7;
+
+  width: 22rem;
+  height: auto;
+}
+
+.containerProductCard img {
+  width: 100%;
+}
+
+.containerProductCard .contentInfos {
+  margin: 1rem 2rem 1rem;
+}
+
+.containerProductCard .contentInfos h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.containerProductCard .contentInfos .desc {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin-top: 0.7rem;
+}
+
+.containerProductCard .contentInfos .priceContainer {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.containerProductCard .contentInfos .priceContainer .price {
+}
+
+.containerProductCard .contentInfos .priceContainer .beforePrice {
+  text-decoration: line-through;
+  color: #b0b0b0;
+}
