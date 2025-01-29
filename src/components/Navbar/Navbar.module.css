@@ -7,6 +7,12 @@
 
   padding: 2rem 6rem 2rem 4rem;
   background-color: var(--white);
+
+  position: fixed; /* Fixa a navbar no topo */
+  top: 0; /* Coloca a navbar no topo da tela */
+  left: 0; /* Garante que ela ocupe toda a largura */
+  right: 0; /* Garante que ela ocupe toda a largura */
+  z-index: 1000; /* Garante que a navbar fique acima de outros elementos */
 }
 
 .containerNavbar .navbar ul {
