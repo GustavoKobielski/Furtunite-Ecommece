@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import CategoryCard from '../../components/category_card/Category';
 import style from './Home.module.css'
 
@@ -46,7 +48,7 @@ const Home = () => {
             <h2 className={style.subtitle}>New Arrival</h2>
             <h1 className={style.title}>Discover Our New Collection</h1>
             <p className={style.text}>Lorem Ipsum Dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-            <a className={style.buy_now}>Buy now</a>
+            <Link to="/shop" className={style.buy_now}>Buy now</Link>
           </div>
         </div>
       </div>

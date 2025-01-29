@@ -16,16 +16,17 @@
 }
 
 .info_pop {
-  width: 38rem;
-  height: 26rem;
+  width: 45rem;
+  min-height: 26rem;
   margin-right: 5rem;
 
   background-color: #fff3e3;
+  border-radius: 10px;
 }
 
 .content {
   height: 100%;
-  padding: 5rem 3rem 1rem 3rem;
+  padding: 5rem 3rem 2rem 3rem;
 }
 
 .subtitle {
@@ -37,13 +38,13 @@
 
 .content .title {
   color: var(--brown);
-  font-size: 3.55rem;
+  font-size: 4.4rem;
   font-weight: bold;
   line-height: 4rem;
 }
 
 .text {
-  margin-top: 0.8rem;
+  margin-top: 1.5rem;
   font-size: 1.2rem;
   color: var(--gray-black);
   font-weight: 500;
@@ -51,7 +52,8 @@
 
 .buy_now {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
   background-color: var(--brown);
   padding: 1.5rem 4rem;
 
