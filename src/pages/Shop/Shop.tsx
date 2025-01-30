@@ -71,7 +71,7 @@ const Shop = () => {
   const totalPages = Math.ceil(products.length / productsPerPage);
 
   return (
-    <main>
+    <main className='my-28'>
       <div className='h-auto'>
         <section className="w-full">
           <img className='w-full object-cover h-full' src={Background_main} alt="" />
