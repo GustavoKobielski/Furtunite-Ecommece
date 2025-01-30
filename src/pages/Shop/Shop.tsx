@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Background_main from '../../assets/Shop/background_mains.svg'
 
