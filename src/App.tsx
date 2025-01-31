@@ -21,14 +21,20 @@ interface Product {
   // ... other product properties
 }
 
+// Define the shape of the context state
+interface CartContextType {
+  cart: Product[];
+  addToCart: (product: Product) => void;
+}
+
 // Cria o contexto para o carrinho
-const CartContext = createContext({
-  cart: [] as Product[], // Specify type here!
-  addToCart: (product: Product) => {}, // Specify type here!
+const CartContext = createContext<CartContextType>({
+  cart: [],
+  addToCart: () => {}, // default no-op function
 });
 
 function App() {
-  const [cart, setCart] = useState<Product[]>([]); // Specify type here!
+  const [cart, setCart] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
     setCart([...cart, product]);
