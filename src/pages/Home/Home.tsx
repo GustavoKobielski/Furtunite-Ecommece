@@ -90,7 +90,7 @@ const Home = () => {
             })}
           </div>
 
-          <a href='#' className={style.show_more}>Show More</a>
+          <Link to="/shop" className={style.show_more}>Show More</Link>
       </div>
 
     </main>
