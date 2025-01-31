@@ -15,7 +15,6 @@ import ProductCard from '../../components/Product_Card/ProductCard';
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -138,7 +137,7 @@ const Shop = () => {
                   <PaginationPrevious
                     href="#"
                     onClick={() => goToPage(currentPage - 1)}
-                    className={currentPage === 1 ? 'text-2xl cursor-not-allowed opacity-50' : ''}
+                    className={currentPage === 1 ? 'text-2xl cursor-not-allowed opacity-50' : 'text-2xl'}
                   />
                 </PaginationItem>
 
