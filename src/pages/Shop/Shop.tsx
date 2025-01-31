@@ -105,16 +105,20 @@ const Shop = () => {
           {/* Display Products */}
           <div className="my-14 flex justify-center">
             <div className='grid grid-cols-4 gap-8'>
-              {currentProducts.map((category, index) => (
-                <ProductCard
-                  key={index}
-                  imageUrl={category.imageUrl}
-                  name={category.name}
-                  description={category.description}
-                  price={category.price}
-                  BeforePrice={category.BeforePrice}
-                />
-              ))}
+              {currentProducts.map((category, index) => {
+              const product = {
+                key: index,
+                imageUrl: category.imageUrl,
+                name: category.name,
+                description: category.description,
+                price: category.price,
+                BeforePrice: category.BeforePrice,
+              };
+
+              return (
+                <ProductCard key={index} product={product} /> // Pass the product object
+              );
+            })}
             </div>
           </div>
 

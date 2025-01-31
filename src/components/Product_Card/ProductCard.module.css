@@ -54,6 +54,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .discountStar {
@@ -73,4 +74,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.overlayVisible {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.addToCartButton {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.addToCartButton:hover {
+  background-color: #ccc;
+  color: black;
 }

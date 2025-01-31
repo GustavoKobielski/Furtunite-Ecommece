@@ -1,4 +1,6 @@
 
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import style from './Navbar.module.css'
 import logo from '../../assets/Logo.svg'
@@ -8,7 +10,15 @@ import Search from '../../assets/Icons/akar-icons_search.svg'
 import Hearth from '../../assets/Icons/akar-icons_heart.svg'
 import Cart from '../../assets/Icons/ant-design_shopping-cart-outlined.svg'
 
+import CartPopup from '../Cart/Cart'
+
 const Navbar = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar o popup
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <div className={style.containerNavbar}>
       <img src={logo} alt="" />
@@ -26,11 +36,11 @@ const Navbar = () => {
         <img src={Alert} alt="" />
         <img src={Search} />
         <img src={Hearth} />
-        <img src={Cart} />
+        <img src={Cart} onClick={toggleCart} style={{ cursor: 'pointer' }}  />
 
       </div>
 
-
+      {isCartOpen && <CartPopup isOpen={isCartOpen} onClose={toggleCart} />}
     </div>
 
   )

@@ -72,15 +72,22 @@ const Home = () => {
           <h1 className={style.title}>Our Products</h1>
 
           <div className={style.wrapper_products}>
-            {products.map((category, index) => (
-              <ProductCard key={index}
-              imageUrl={category.imageUrl}
-              name={category.name}
-              description={category.description}
-              price={category.price}
-              BeforePrice={category.BeforePrice}
-              />
-            ))}
+
+
+            {products.map((category, index) => {
+              const product = {
+                key: index,
+                imageUrl: category.imageUrl,
+                name: category.name,
+                description: category.description,
+                price: category.price,
+                BeforePrice: category.BeforePrice,
+              };
+
+              return (
+                <ProductCard key={index} product={product} /> // Pass the product object
+              );
+            })}
           </div>
 
           <a href='#' className={style.show_more}>Show More</a>
