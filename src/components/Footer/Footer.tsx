@@ -1,15 +1,13 @@
+import LogoFuniro from '../../assets/Funiro..svg';
 
-import style from './Footer.module.css'
-import LogoFuniro from '../../assets/Funiro..svg'
 
 const Footer = () => {
   return (
-    <div>
-      <footer className={style.footer}>
-        <img src={LogoFuniro} alt="" />
-      </footer>
-    </div>
-  )
-}
+    <footer className="p-4">
+      <img className="mb-4" src={LogoFuniro} alt="Logo Funiro" />
+
+    </footer>
+  );
+};
 
 export default Footer;

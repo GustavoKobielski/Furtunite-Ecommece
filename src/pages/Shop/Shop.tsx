@@ -1,15 +1,26 @@
 import { useState } from 'react';
 
-import Background_main from '../../assets/Shop/background_mains.svg'
+import Background_main from '../../assets/Shop/background_mains.svg';
 
 // Icons
-import IconSearch from '../../assets/Icons/Shop/system-uicons_filtering.svg'
-import SelectIcon from '../../assets/Icons/Shop/ci_grid-big-round.svg'
-import IconList from '../../assets/Icons/Shop/bi_view-list.svg'
+import IconSearch from '../../assets/Icons/Shop/system-uicons_filtering.svg';
+import SelectIcon from '../../assets/Icons/Shop/ci_grid-big-round.svg';
+import IconList from '../../assets/Icons/Shop/bi_view-list.svg';
 
 // Images
-import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg'
+import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg';
 import ProductCard from '../../components/Product_Card/ProductCard';
+
+// SHADCN
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/Shadcn/ui/Pagination";
 
 interface Product {
   name: string;
@@ -20,8 +31,7 @@ interface Product {
 }
 
 const Shop = () => {
-
-   const products: Product[] = [
+  const products: Product[] = [
     { name: "Product 1", description: "algoo", price: 10.99, BeforePrice: 30, imageUrl: imageCardCategory1 },
     { name: "Product 2", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
     { name: "Product 3", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
@@ -59,8 +69,6 @@ const Shop = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-
-
 
   // Função para ir para uma página específica
   const goToPage = (page: number) => {
@@ -106,45 +114,60 @@ const Shop = () => {
           <div className="my-14 flex justify-center">
             <div className='grid grid-cols-4 gap-8'>
               {currentProducts.map((category, index) => {
-              const product = {
-                key: index,
-                imageUrl: category.imageUrl,
-                name: category.name,
-                description: category.description,
-                price: category.price,
-                BeforePrice: category.BeforePrice,
-              };
+                const product = {
+                  key: index,
+                  imageUrl: category.imageUrl,
+                  name: category.name,
+                  description: category.description,
+                  price: category.price,
+                  BeforePrice: category.BeforePrice,
+                };
 
-              return (
-                <ProductCard key={index} product={product} /> // Pass the product object
-              );
-            })}
+                return (
+                  <ProductCard key={index} product={product} /> // Pass the product object
+                );
+              })}
             </div>
           </div>
 
           {/* Pagination Controls */}
           <div className="flex justify-center my-8 gap-4">
-            <div className={`flex gap-10 ${currentProducts.length < 16 ? 'pt-16' : ''}`}>
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    href="#"
+                    onClick={() => goToPage(currentPage - 1)}
+                    className={currentPage === 1 ? 'text-2xl cursor-not-allowed opacity-50' : ''}
+                  />
+                </PaginationItem>
 
+                {/* Páginas numeradas */}
+                {[...Array(totalPages)].map((_, index) => {
+                  const pageNumber = index + 1;
+                  return (
+                    <PaginationItem key={pageNumber}>
+                      <PaginationLink
+                        href="#"
+                        isActive={currentPage === pageNumber}
+                        onClick={() => goToPage(pageNumber)}
+                        className={currentPage === pageNumber ? 'text-2xl bg-brown text-white' : 'text-2xl bg-[#F9F1E7] text-black'}
+                      >
+                        {pageNumber}
+                      </PaginationLink>
+                    </PaginationItem>
+                  );
+                })}
 
-              {/* Páginas numeradas */}
-              {[...Array(totalPages)].map((_, index) => {
-                const pageNumber = index + 1;
-                return (
-                  <button
-                    key={pageNumber}
-                    onClick={() => goToPage(pageNumber)}
-                    className={`px-6 py-4 rounded-md text-xl ${currentPage === pageNumber ? 'bg-brown text-white' : 'bg-[#F9F1E7] text-black'} text-lg transition-all duration-300`}
-                  >
-                    {pageNumber}
-                  </button>
-                );
-              })}
-
-              <button onClick={nextPage} disabled={currentPage === totalPages} className="px-4 py-2 bg-[#F9F1E7] rounded-md text-xl">
-                Next
-              </button>
-            </div>
+                <PaginationItem>
+                  <PaginationNext
+                    href="#"
+                    onClick={() => nextPage()}
+                    className={currentPage === totalPages ? 'text-2xl cursor-not-allowed opacity-50' : 'text-2xl'}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
 
         </section>
