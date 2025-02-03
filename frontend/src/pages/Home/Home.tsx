@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CategoryCard from '../../components/category_card/Category';
 import ProductCard from '../../components/Product_Card/ProductCard';
 import style from './Home.module.css';
-import { fetchProductsAndCategories } from '../../services/api';
+import { fetchAll } from '../../services/api';
 
 interface Category {
   name: string;
@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchProductsAndCategories();
+        const data = await fetchAll();
         setCategories(data.categories);
         setProducts(data.produtos);
       } catch (error) {

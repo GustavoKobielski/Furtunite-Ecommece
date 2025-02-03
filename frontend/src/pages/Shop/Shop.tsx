@@ -28,6 +28,7 @@ interface Product {
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   // Número de produtos por página
   const productsPerPage = 16;
@@ -36,20 +37,17 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchProductsAndCategories(); // Chama a função que busca os produtos da API
-        setProducts(data.produtos); // Supondo que o retorno tenha a estrutura { produtos: [...] }
+        // Passando os parâmetros page e limit para buscar os produtos da página atual
+        const data = await fetchProductsAndCategories(currentPage, productsPerPage);
+        setProducts(data.produtos); // Setando os produtos da página
+        setTotalProducts(data.total); // Setando o total de produtos
       } catch (error) {
         console.error('Erro ao buscar produtos:', error);
       }
     };
 
-    fetchData();
-  }, []);
-
-  // Calcula os produtos a serem exibidos para a página atual
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    fetchData(); // Chama a função para buscar os produtos
+  }, [currentPage]); // A requisição será feita sempre que a página mudar
 
   // Função para ir para a próxima página
   const nextPage = () => {
@@ -64,32 +62,32 @@ const Shop = () => {
   };
 
   // Calcula o total de páginas
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   return (
     <main className='my-28'>
       <div className='h-auto'>
         <section className="w-full">
-          <img className='w-full object-cover h-full' src={Background_main} alt="" />
+          <img className='w-full object-cover h-full' src={Background_main} alt="Background" />
 
           <div className='bg-[#F9F1E7] w-full h-32'>
             <div className='flex justify-between py-9 px-32 items-center'>
               <div className='flex items-center gap-6'>
                 <img src={IconSearch} />
                 <p className='text-2xl'>Filter</p>
-                <img src={SelectIcon} alt="" />
-                <img src={IconList} alt="" />
+                <img src={SelectIcon} alt="Select Icon" />
+                <img src={IconList} alt="Icon List" />
 
                 <div className="border-l border-solid pl-11 ml-5 text-2xl">
                   <p>
-                    Showing <span>{indexOfFirstProduct + 1}-{Math.min(indexOfLastProduct, products.length)}</span> of <span>{products.length}</span> results
+                    Showing <span>{(currentPage - 1) * productsPerPage + 1}-{Math.min(currentPage * productsPerPage, totalProducts)}</span> of <span>{totalProducts}</span> results
                   </p>
                 </div>
               </div>
 
               <div className='flex items-center gap-6'>
                 <p className='text-2xl'>Show</p>
-                <span className='text-2xl py-4 px-5 bg-white text-[#9F9F9F] rounded'>16</span>
+                <span className='text-2xl py-4 px-5 bg-white text-[#9F9F9F] rounded'>{productsPerPage}</span>
 
                 <p className='text-2xl'>Short by</p>
                 <span className='text-2xl bg-white text-[#9F9F9F] pl-6 pr-20 py-4 rounded'>Default</span>
@@ -100,8 +98,8 @@ const Shop = () => {
           {/* Display Products */}
           <div className="my-14 flex justify-center">
             <div className='grid grid-cols-4 gap-8'>
-              {currentProducts.map((product, index) => {
-              const imageUrl = `http://localhost:5000/assets/${product.imageUrl}`;
+              {products.map((product, index) => {
+                const imageUrl = `http://localhost:5000/assets/${product.imageUrl}`;
 
                 return (
                   <ProductCard
@@ -165,4 +163,3 @@ const Shop = () => {
 };
 
 export default Shop;
-

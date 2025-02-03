@@ -5,24 +5,29 @@ const api = axios.create({
   baseURL: "http://localhost:5000", // URL do seu backend
 });
 
-// Função para buscar produtos e categorias
-export const fetchProductsAndCategories = async () => {
+// Função para buscar produtos e categorias com paginação
+export const fetchProductsAndCategories = async (page: number, limit: number) => {
   try {
-    const response = await api.get("/data"); // Requisição para a rota '/data'
-    return response.data; // Retorna os dados no formato { categories, produtos }
+    const response = await api.get("/products", {
+      params: {
+        page,  // Página atual
+        limit, // Limite de produtos por página
+      },
+    });
+    return response.data; // Retorna os dados no formato { categorias, produtos, total }
   } catch (error) {
     console.error("Erro ao buscar produtos e categorias:", error);
     throw error;
   }
 };
 
-// Função para buscar apenas os produtos
-export const fetchProducts = async () => {
+// Função para buscar produtos e categorias
+export const fetchAll = async () => {
   try {
-    const response = await api.get("/products"); // Requisição para a rota '/products'
-    return response.data; // Retorna os dados no formato { produtos }
+    const response = await api.get("/data"); // Requisição para a rota '/data'
+    return response.data; // Retorna os dados no formato { categories, produtos }
   } catch (error) {
-    console.error("Erro ao buscar produtos:", error);
+    console.error("Erro ao buscar produtos e categorias:", error);
     throw error;
   }
 };
