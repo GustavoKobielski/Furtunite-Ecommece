@@ -9,5 +9,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'), // Aqui você define que o @ aponta para a pasta src
     }
-  }
+  },
+  server: {
+    port: 3000, // Substitua com a porta desejada
+  },
 })

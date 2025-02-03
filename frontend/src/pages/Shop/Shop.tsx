@@ -1,17 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { fetchProductsAndCategories } from '../../services/api'; // Importe a função que busca os produtos da API
 
 import Background_main from '../../assets/Shop/background_mains.svg';
-
-// Icons
 import IconSearch from '../../assets/Icons/Shop/system-uicons_filtering.svg';
 import SelectIcon from '../../assets/Icons/Shop/ci_grid-big-round.svg';
 import IconList from '../../assets/Icons/Shop/bi_view-list.svg';
-
-// Images
-import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg';
 import ProductCard from '../../components/Product_Card/ProductCard';
 
-// SHADCN
+// SHADCN Pagination components
 import {
   Pagination,
   PaginationContent,
@@ -30,32 +26,25 @@ interface Product {
 }
 
 const Shop = () => {
-  const products: Product[] = [
-    { name: "Product 1", description: "algoo", price: 10.99, BeforePrice: 30, imageUrl: imageCardCategory1 },
-    { name: "Product 2", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 3", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 4", description: "algoo", price: 40.99, BeforePrice: 80, imageUrl: imageCardCategory1 },
-    { name: "Product 5", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 6", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 7", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 8", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 9", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 10", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 11", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 12", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 13", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 14", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 15", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 16", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 17", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 18", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-  ];
-
-  // Estado para controlar a página atual
+  const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Número de produtos por página
   const productsPerPage = 16;
+
+  // Buscar os produtos da API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchProductsAndCategories(); // Chama a função que busca os produtos da API
+        setProducts(data.produtos); // Supondo que o retorno tenha a estrutura { produtos: [...] }
+      } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Calcula os produtos a serem exibidos para a página atual
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -88,7 +77,6 @@ const Shop = () => {
               <div className='flex items-center gap-6'>
                 <img src={IconSearch} />
                 <p className='text-2xl'>Filter</p>
-
                 <img src={SelectIcon} alt="" />
                 <img src={IconList} alt="" />
 
@@ -112,18 +100,20 @@ const Shop = () => {
           {/* Display Products */}
           <div className="my-14 flex justify-center">
             <div className='grid grid-cols-4 gap-8'>
-              {currentProducts.map((category, index) => {
-                const product = {
-                  key: index,
-                  imageUrl: category.imageUrl,
-                  name: category.name,
-                  description: category.description,
-                  price: category.price,
-                  BeforePrice: category.BeforePrice,
-                };
+              {currentProducts.map((product, index) => {
+              const imageUrl = `http://localhost:5000/assets/${product.imageUrl}`;
 
                 return (
-                  <ProductCard key={index} product={product} /> // Pass the product object
+                  <ProductCard
+                    key={index}
+                    product={{
+                      imageUrl: imageUrl, // Passa o URL correto da imagem
+                      name: product.name,
+                      description: product.description,
+                      price: product.price,
+                      BeforePrice: product.BeforePrice,
+                    }}
+                  />
                 );
               })}
             </div>
@@ -168,7 +158,6 @@ const Shop = () => {
               </PaginationContent>
             </Pagination>
           </div>
-
         </section>
       </div>
     </main>
@@ -176,3 +165,4 @@ const Shop = () => {
 };
 
 export default Shop;
+

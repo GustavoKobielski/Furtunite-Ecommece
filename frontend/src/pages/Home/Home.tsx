@@ -1,14 +1,13 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import CategoryCard from '../../components/category_card/Category';
-import style from './Home.module.css'
-
-import imageCardCategory1 from '../../assets/Home/CardCategory/Mask Group.svg'
 import ProductCard from '../../components/Product_Card/ProductCard';
+import style from './Home.module.css';
+import { fetchProductsAndCategories } from '../../services/api';
 
 interface Category {
   name: string;
-  imageUrl: string;
+  imageUrl: string; // Caminho da imagem
 }
 
 interface Product {
@@ -20,34 +19,31 @@ interface Product {
 }
 
 const Home = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const categories: Category[] = [
-    { name: "Dinning", imageUrl: imageCardCategory1 },
-    { name: "Living", imageUrl: imageCardCategory1 },
-    { name: "Bedroom", imageUrl: imageCardCategory1 },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchProductsAndCategories();
+        setCategories(data.categories);
+        setProducts(data.produtos);
+      } catch (error) {
+        console.error("Erro ao buscar dados", error);
+      }
+    };
 
-  const products: Product[] = [
-    { name: "Product 1", description: "algoo", price: 10.99, BeforePrice: 30, imageUrl: imageCardCategory1 },
-    { name: "Product 2", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 3", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 4", description: "algoo", price: 40.99, BeforePrice: 80, imageUrl: imageCardCategory1 },
-    { name: "Product 5", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 6", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 7", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-    { name: "Product 8", description: "algoo", price: 40.99, imageUrl: imageCardCategory1 },
-
-  ];
+    fetchData();
+  }, []);
 
   return (
     <main className={style.main}>
       <div className={style.container}>
         <div className={style.info_pop}>
-
           <div className={style.content}>
             <h2 className={style.subtitle}>New Arrival</h2>
             <h1 className={style.title}>Discover Our New Collection</h1>
-            <p className={style.text}>Lorem Ipsum Dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p className={style.text}>Lorem Ipsum Dolor sit amet, consectetur adipiscing elit.</p>
             <Link to="/shop" className={style.buy_now}>Buy now</Link>
           </div>
         </div>
@@ -58,44 +54,47 @@ const Home = () => {
         <p className={style.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
         <div className={style.wrapper_browse}>
-          {categories.map((category, index) => (
-            <CategoryCard
-              key={index}
-              name={category.name}
-              imageUrl={category.imageUrl}
-            />
-          ))}
+          {categories.map((category, index) => {
+            // Concatena o URL para a imagem
+            const imageUrl = `http://localhost:5000/assets/${category.imageUrl}`;
+            return (
+              <CategoryCard
+                key={index}
+                name={category.name}
+                imageUrl={imageUrl} // Passa o URL correto da imagem
+              />
+            );
+          })}
         </div>
       </div>
 
       <div className={style.our_products}>
-          <h1 className={style.title}>Our Products</h1>
+        <h1 className={style.title}>Our Products</h1>
 
-          <div className={style.wrapper_products}>
-
-
-            {products.map((category, index) => {
-              const product = {
-                key: index,
-                imageUrl: category.imageUrl,
-                name: category.name,
-                description: category.description,
-                price: category.price,
-                BeforePrice: category.BeforePrice,
-              };
-
-              return (
-                <ProductCard key={index} product={product} /> // Pass the product object
-              );
-            })}
-          </div>
-
-          <Link to="/shop" className={style.show_more}>Show More</Link>
+        <div className={style.wrapper_products}>
+        {products.slice(0, 8).map((product, index) => {
+          // Concatena o URL para a imagem
+          const imageUrl = `http://localhost:5000/assets/${product.imageUrl}`;
+          return (
+            <ProductCard
+              key={index}
+              product={{
+                imageUrl: imageUrl, // Passa o URL correto da imagem
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                BeforePrice: product.BeforePrice,
+              }}
+            />
+          );
+        })}
       </div>
 
-    </main>
 
-  )
-}
+        <Link to="/shop" className={style.show_more}>Show More</Link>
+      </div>
+    </main>
+  );
+};
 
 export default Home;

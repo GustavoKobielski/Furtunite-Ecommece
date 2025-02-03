@@ -1,0 +1,128 @@
+{
+  "categories": [
+    {
+      "name": "Dinning",
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Living",
+      "imageUrl": "Home/Image-living room.svg"
+    },
+    {
+      "name": "Bedroom",
+      "imageUrl": "Home/Mask Group (2).svg"
+    }
+  ],
+  "produtos": [
+    {
+      "name": "Product 1",
+      "description": "algoo",
+      "price": 10.99,
+      "BeforePrice": 30,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 2",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 3",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 4",
+      "description": "algoo",
+      "price": 40.99,
+      "BeforePrice": 80,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 5",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 6",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 7",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 8",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 9",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 10",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 11",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 12",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 13",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 14",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 15",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 16",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 17",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    },
+    {
+      "name": "Product 18",
+      "description": "algoo",
+      "price": 40.99,
+      "imageUrl": "Home/Mask Group.svg"
+    }
+  ]
+}

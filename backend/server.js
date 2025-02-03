@@ -1,14 +1,27 @@
-// Importando o express
 const express = require("express");
+const path = require("path");
+const cors = require("cors");
 const app = express();
-const port = 5000; // Defina a porta que você vai rodar o servidor
+const port = 5000;
 
-// Rota simples para testar
-app.get("/", (req, res) => {
-  res.send("Servidor está funcionando!");
+// Habilitar CORS
+app.use(cors());
+
+// Servir arquivos estáticos da pasta 'assets' (onde as imagens estão localizadas)
+app.use("/assets", express.static(path.join(__dirname, "assets")));
+
+// Dados do JSON
+const data = require("./data/products.json");
+
+// Rota para pegar produtos e categorias
+app.get("/data", (req, res) => {
+  res.json({
+    categories: data.categories,
+    produtos: data.produtos,
+  });
 });
 
-// Inicializa o servidor
+// Inicializando o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
