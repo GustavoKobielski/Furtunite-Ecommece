@@ -37,10 +37,9 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Passando os parâmetros page e limit para buscar os produtos da página atual
         const data = await fetchProductsAndCategories(currentPage, productsPerPage);
-        setProducts(data.produtos); // Setando os produtos da página
-        setTotalProducts(data.total); // Setando o total de produtos
+        setProducts(data.produtos);
+        setTotalProducts(data.total)
       } catch (error) {
         console.error('Erro ao buscar produtos:', error);
       }

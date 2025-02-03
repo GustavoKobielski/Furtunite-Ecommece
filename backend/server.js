@@ -11,11 +11,10 @@ app.use("/assets", express.static(path.join(__dirname, "assets")));
 
 const data = require("./data/products.json");
 
-// Função para paginar os produtos
 const getPaginatedProducts = (page, limit) => {
-  const startIndex = (page - 1) * limit; // Índice inicial
-  const endIndex = page * limit; // Índice final
-  return data.produtos.slice(startIndex, endIndex); // Retorna a fatia dos produtos
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  return data.produtos.slice(startIndex, endIndex);
 };
 
 app.get("/data", (req, res) => {
@@ -25,18 +24,15 @@ app.get("/data", (req, res) => {
   });
 });
 
-// Rota para pegar produtos com paginação e categorias
 app.get("/products", (req, res) => {
-  const page = parseInt(req.query.page) || 1; // Pega a página da query ou define como 1
-  const limit = parseInt(req.query.limit) || 16; // Pega o limite de itens ou define como 16
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 16;
 
-  // Obtém os produtos paginados
   const paginatedProducts = getPaginatedProducts(page, limit);
 
-  // Retorna os produtos paginados, categorias e o total de produtos
   res.json({
     produtos: paginatedProducts,
-    total: data.produtos.length, // Retorna o total de produtos
+    total: data.produtos.length,
   });
 });
 
