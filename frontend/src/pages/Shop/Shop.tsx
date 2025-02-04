@@ -96,7 +96,7 @@ const Shop = () => {
 
           {/* Display Products */}
           <div className="my-14 flex justify-center">
-            <div className='grid grid-cols-4 gap-8'>
+            <div className='grid grid-cols-4 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
               {products.map((product, index) => {
                 const imageUrl = `http://localhost:5000/assets/${product.imageUrl}`;
 
